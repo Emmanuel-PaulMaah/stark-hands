@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hand Brightness Controller</title>
+  <title>stark hands</title>
   <style>
     :root {
       --bg: #08111f;
@@ -469,12 +469,12 @@
   <div class="app">
     <div class="header">
       <div class="title-wrap">
-        <h1>Hand Brightness Controller</h1>
-        <p>Pinch thumb + index to grab. Rotate your hand to drive the bulb.</p>
+        <h1>stark hands</h1>
+        <p>pinch thumb + index to grab. rotate your hand to drive the bulb.</p>
       </div>
       <div class="pill">
         <span class="dot" id="cameraDot"></span>
-        <span id="cameraStatus">Initializing camera…</span>
+        <span id="cameraStatus">initializing camera…</span>
       </div>
     </div>
 
@@ -485,8 +485,8 @@
           <canvas id="canvas"></canvas>
 
           <div class="overlay-top">
-            <div class="chip" id="gestureChip">Gesture: searching for hand</div>
-            <div class="chip" id="turnChip">Turn: —</div>
+            <div class="chip" id="gestureChip">gesture: searching for hand</div>
+            <div class="chip" id="turnChip">turn: —</div>
           </div>
         </div>
 
@@ -505,48 +505,48 @@
 
       <aside class="sidebar">
         <section class="panel card">
-          <h2>Brightness</h2>
+          <h2>brightness</h2>
           <div class="metric">
             <div class="value" id="brightnessValue">50</div>
             <div class="suffix">%</div>
           </div>
-          <div class="sub" id="brightnessText">Neutral output</div>
+          <div class="sub" id="brightnessText">neutral output</div>
           <div class="bar">
             <div class="bar-fill" id="brightnessFill"></div>
           </div>
 
           <div class="grid">
             <div class="mini">
-              <div class="label">Angle</div>
+              <div class="label">angle</div>
               <div class="big" id="angleValue">0°</div>
             </div>
             <div class="mini">
-              <div class="label">Delta</div>
+              <div class="label">delta</div>
               <div class="big" id="deltaValue">0.0</div>
             </div>
             <div class="mini">
-              <div class="label">Direction</div>
+              <div class="label">direction</div>
               <div class="big" id="directionValue">—</div>
             </div>
             <div class="mini">
-              <div class="label">Pinch</div>
-              <div class="big" id="pinchValue">No</div>
+              <div class="label">pinch</div>
+              <div class="big" id="pinchValue">no</div>
             </div>
           </div>
 
-          <div class="state idle" id="stateBadge">Idle · waiting for pinch</div>
+          <div class="state idle" id="stateBadge">idle · waiting for pinch</div>
         </section>
 
         <section class="panel card instructions">
-          <h2>How it works</h2>
+          <h2>how it works</h2>
           <ul>
-            <li>Show one hand to the camera.</li>
-            <li>Pinch your thumb and index finger together to grab the control.</li>
-            <li>Rotate your hand clockwise or counterclockwise while pinching.</li>
-            <li>The DOM bulb and ambient room light update in real time.</li>
+            <li>show one hand to the camera.</li>
+            <li>pinch your thumb & index finger together to grab the control.</li>
+            <li>rotate your hand clockwise or counterclockwise while pinching.</li>
+            <li>the DOM bulb & ambient room light update in real time.</li>
           </ul>
           <div class="footer-note">
-            Browser JS can simulate light visually, but cannot change the monitor’s actual hardware brightness.
+            browser JS can simulate light visually, but cannot change the monitor’s actual hardware brightness.
           </div>
         </section>
       </aside>
