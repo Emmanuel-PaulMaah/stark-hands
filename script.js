@@ -252,11 +252,22 @@ class HandBrightnessController {
     this.ctx.fillStyle = "rgba(234,242,255,0.95)";
     this.ctx.font = "700 28px Inter, sans-serif";
     this.ctx.textAlign = "center";
-    this.ctx.fillText(`${Math.round(this.brightness)}%`, cx, y + 38);
+    this.drawUnmirroredText(
+      `${Math.round(this.brightness)}%`,
+      cx,
+      y + 38,
+      (text, tx, ty) => this.ctx.fillText(text, tx, ty)
+    );
 
     this.ctx.fillStyle = "rgba(147,164,191,0.95)";
     this.ctx.font = "600 12px Inter, sans-serif";
-    this.ctx.fillText("CONTROL", cx, y + 56);
+    this.ctx.textAlign = "center";
+    this.drawUnmirroredText(
+      "CONTROL",
+      cx,
+      y + 56,
+      (text, tx, ty) => this.ctx.fillText(text, tx, ty)
+    );
 
     this.ctx.restore();
   }
@@ -310,7 +321,12 @@ class HandBrightnessController {
       this.ctx.fillStyle = "#eaf2ff";
       this.ctx.font = "700 13px Inter, sans-serif";
       this.ctx.textAlign = "center";
-      this.ctx.fillText(this.direction, cx, cy - 54);
+      this.drawUnmirroredText(
+        this.direction,
+        cx,
+        cy - 54,
+        (text, tx, ty) => this.ctx.fillText(text, tx, ty)
+      );
     }
   }
 
@@ -324,7 +340,13 @@ class HandBrightnessController {
     if (foundHand && !pinching) text = "Pinch thumb + index to grab";
     if (foundHand && pinching) text = "Rotate hand while pinching";
 
-    this.ctx.fillText(text, 18, this.canvas.clientHeight - 20);
+    this.drawUnmirroredText(
+      text,
+      18,
+      this.canvas.clientHeight - 20,
+      (label, tx, ty) => this.ctx.fillText(label, tx, ty)
+    );
+
     this.ctx.restore();
   }
 
@@ -336,6 +358,14 @@ class HandBrightnessController {
     this.ctx.arcTo(x, y + h, x, y, r);
     this.ctx.arcTo(x, y, x + w, y, r);
     this.ctx.closePath();
+  }
+
+  drawUnmirroredText(text, x, y, drawFn) {
+    this.ctx.save();
+    this.ctx.translate(this.canvas.clientWidth, 0);
+    this.ctx.scale(-1, 1);
+    drawFn(text, this.canvas.clientWidth - x, y);
+    this.ctx.restore();
   }
 
   updateUI(foundHand, pinching) {
